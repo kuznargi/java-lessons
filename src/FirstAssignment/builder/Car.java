@@ -1,5 +1,4 @@
-package builder;
-
+package FirstAssignment.builder;
 import java.util.Objects;
 
 
@@ -14,9 +13,9 @@ public final class Car {
     private Car(String model, String engineType, String color, int doors, Transmission transmission) {
         this.model = Objects.requireNonNull(model, "Model must not be null");
         this.engineType = Objects.requireNonNull(engineType, "Engine type must not be null");
-        this.color = color != null ? color : "Default";  // Default for optional field
-        this.doors = doors > 0 ? doors : 4;             // Default for optional field
-        this.transmission = transmission != null ? transmission : Transmission.MANUAL; // Default
+        this.color = color != null ? color : "Default";
+        this.doors = doors > 0 ? doors : 4;
+        this.transmission = transmission != null ? transmission : Transmission.MANUAL;
     }
 
 
@@ -87,10 +86,13 @@ public final class Car {
                 .withTransmission(Transmission.AUTOMATIC)
                 .build();
         System.out.println(myCar);
+//        Scanner scanner = new Scanner(System.in);
         try {
             new Builder("Sedan").build();
         } catch (IllegalStateException e) {
             System.out.println("Error: " + e.getMessage()); // Output: Error: Engine type is required
         }
+
+
     }
 }
